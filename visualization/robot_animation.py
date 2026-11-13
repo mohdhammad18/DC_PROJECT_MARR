@@ -17,6 +17,7 @@ from .trajectory import (
     COLOR_ODOM,
     COLOR_TRUTH,
     robot_outline,
+    title_and_legend_on_top,
 )
 
 
@@ -91,8 +92,7 @@ def animation_figure(
         title="Animated replay (client-side; use Play / Pause or drag the slider)",
         xaxis=dict(title="X global [m]", range=[xs.min() - pad, xs.max() + pad]),
         yaxis=dict(title="Y global [m]", range=[ys.min() - pad, ys.max() + pad], scaleanchor="x", scaleratio=1),
-        template="plotly_white", height=640, margin=dict(l=10, r=10, t=70, b=10),
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
+        template="plotly_white", height=680,
         updatemenus=[
             dict(
                 type="buttons", direction="left", x=0.0, y=-0.08, xanchor="left", yanchor="top",
@@ -116,4 +116,5 @@ def animation_figure(
             )
         ],
     )
+    title_and_legend_on_top(fig, bottom_margin=90)  # room below for the Play / Pause buttons and slider
     return fig

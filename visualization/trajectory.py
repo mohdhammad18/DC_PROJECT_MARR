@@ -71,18 +71,30 @@ def _add_boundary(fig: go.Figure, boundary: Mapping[str, float] | None) -> None:
     )
 
 
+def title_and_legend_on_top(fig: go.Figure, bottom_margin: int = 10) -> None:
+    """Pin the title to the top-left and put the (possibly two-row) legend between it and the plot.
+
+    The legend grows upwards from the plot area, so the top margin must leave room for
+    both the legend rows and the title; otherwise a wrapped legend overlaps the title.
+    """
+    fig.update_layout(
+        title=dict(x=0, xanchor="left", y=0.99, yanchor="top"),
+        legend=dict(orientation="h", yanchor="bottom", y=1.01, xanchor="left", x=0),
+        margin=dict(l=10, r=10, t=125, b=bottom_margin),
+    )
+
+
 def _base_layout(fig: go.Figure, title: str, height: int = 620) -> None:
     fig.update_layout(
         title=title,
         xaxis=dict(title="X global [m]", zeroline=True),
         yaxis=dict(title="Y global [m]", scaleanchor="x", scaleratio=1, zeroline=True),
         hovermode="closest",
-        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
         height=height,
-        margin=dict(l=10, r=10, t=70, b=10),
         template="plotly_white",
         uirevision="trajectory",  # keep zoom/pan across Streamlit reruns
     )
+    title_and_legend_on_top(fig)
 
 
 def trajectory_figure(

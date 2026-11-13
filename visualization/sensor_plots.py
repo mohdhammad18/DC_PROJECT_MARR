@@ -9,13 +9,14 @@ from plotly.subplots import make_subplots
 
 from src.sensors import GPS_DISABLED, GPS_DROPOUT
 
-from .trajectory import COLOR_EKF, COLOR_GPS, COLOR_ODOM, COLOR_TRUTH
+from .trajectory import COLOR_EKF, COLOR_GPS, COLOR_ODOM, COLOR_TRUTH, title_and_legend_on_top
 
-_LAYOUT = dict(template="plotly_white", margin=dict(l=10, r=10, t=60, b=10), uirevision="plots")
+_LAYOUT = dict(template="plotly_white", uirevision="plots")
 
 
 def _legend_top(fig: go.Figure) -> None:
-    fig.update_layout(legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0))
+    """Title top-left, legend (may wrap to several rows) between the title and the plot."""
+    title_and_legend_on_top(fig)
 
 
 def _gps_fix_marks(fig: go.Figure, d: pd.DataFrame, row: int | None = None, col: int | None = None) -> None:
