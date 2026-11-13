@@ -1,0 +1,16 @@
+---
+description: Push project work to the DC_PROJECT_MARR GitHub repository
+alwaysApply: true
+---
+
+# Push destination
+
+When the user asks you to build or change this project, commit the work and push it to:
+
+https://github.com/mohdhammad18/DC_PROJECT_MARR.git
+
+- Remote name: `origin`
+- Default branch: `main`
+- Do this after the requested work is in place, without waiting for a separate push request.
+- Do not force-push. Do not change git config. Do not commit secrets (`.env`, credentials, keys).
+- If the push needs authentication and fails, say so and stop. Do not invent credentials or switch remotes.

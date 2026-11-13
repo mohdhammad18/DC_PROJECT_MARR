@@ -1,0 +1,10 @@
+# Direct dependencies of the Robot Localization Simulator (Python >= 3.10).
+# Lower bounds are the oldest versions the code relies on; upper bounds guard against
+# the next major release. Developed and tested with: streamlit 1.67, numpy 2.5,
+# pandas 3.1, plotly 7.1, PyYAML 6.0, pytest 9.2 on Python 3.14.
+streamlit>=1.50,<2
+numpy>=1.26,<3
+pandas>=2.2,<4
+plotly>=5.24,<8
+PyYAML>=6.0,<7
+pytest>=8.0,<10
